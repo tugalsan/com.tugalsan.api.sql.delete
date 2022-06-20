@@ -8,9 +8,9 @@ public class TS_SQLDeleteUtils {
         return new TS_SQLDelete(anchor, tableName);
     }
 
-    public static void test() {
-        TS_SQLDeleteUtils
-                .delete(null, "tn")
-                .whereConditionAnd(conditions -> conditions.lngEq("", 0));
-    }
+//    public static void test() {
+//        TS_SQLDeleteUtils
+//                .delete(null, "tn")
+//                .whereConditionAnd(conditions -> conditions.lngEq("", 0));
+//    }
 }
