@@ -8,7 +8,7 @@ import com.tugalsan.api.unsafe.client.*;
 
 public class TS_SQLDeleteExecutor {
 
-    final private static TS_Log d = TS_Log.of(TS_SQLDeleteExecutor.class.getSimpleName());
+    final private static TS_Log d = TS_Log.of(TS_SQLDeleteExecutor.class);
 
     public TS_SQLDeleteExecutor(TS_SQLConnAnchor anchor, CharSequence tableName) {
         this.anchor = anchor;
