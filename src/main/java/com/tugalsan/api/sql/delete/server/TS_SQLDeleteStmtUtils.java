@@ -6,7 +6,7 @@ import com.tugalsan.api.sql.update.server.*;
 
 public class TS_SQLDeleteStmtUtils { 
 
-    public static int clear(TS_SQLConnAnchor anchor, CharSequence tableName) {
+    public static TS_SQLConnStmtUpdateResult clear(TS_SQLConnAnchor anchor, CharSequence tableName) {
         TS_SQLSanitizeUtils.sanitize(tableName);
         return TS_SQLUpdateStmtUtils.update(anchor, "TRUNCATE ".concat(tableName.toString()));
     }

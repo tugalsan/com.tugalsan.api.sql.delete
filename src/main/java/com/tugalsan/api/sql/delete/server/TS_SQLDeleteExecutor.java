@@ -28,7 +28,7 @@ public class TS_SQLDeleteExecutor {
         return sb.toString();
     }
 
-    public int execute() {
+    public TS_SQLConnStmtUpdateResult execute() {
         d.ci("execute", toString());
         return TS_SQLUpdateStmtUtils.update(anchor, toString(), fillStmt -> {
             where.fill(fillStmt, 0);
