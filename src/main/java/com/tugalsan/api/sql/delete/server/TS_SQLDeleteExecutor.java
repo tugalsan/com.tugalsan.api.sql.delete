@@ -22,14 +22,14 @@ public class TS_SQLDeleteExecutor {
     public String toString() {
         var sb = new StringBuilder("DELETE FROM ").append(tableName);
         if (where == null) {
-            TGS_UnSafe.catchMeIfUCan(d.className, "toString", "where cannot be null");
+            TGS_UnSafe.thrw(d.className, "toString", "where cannot be null");
         }
         sb.append(" ").append(where);
         return sb.toString();
     }
 
-    public TS_SQLConnStmtUpdateResult execute() {
-        d.ci("execute", toString());
+    public TS_SQLConnStmtUpdateResult run() {
+        d.ci("run", toString());
         return TS_SQLUpdateStmtUtils.update(anchor, toString(), fillStmt -> {
             where.fill(fillStmt, 0);
         });
