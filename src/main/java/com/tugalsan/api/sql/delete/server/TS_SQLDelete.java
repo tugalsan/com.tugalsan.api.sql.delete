@@ -9,7 +9,7 @@ public class TS_SQLDelete {
     public TS_SQLDelete(TS_SQLConnAnchor anchor, CharSequence tableName) {
         executor = new TS_SQLDeleteExecutor(anchor, tableName);
     }
-    private TS_SQLDeleteExecutor executor;
+    private final TS_SQLDeleteExecutor executor;
 
     public TS_SQLConnStmtUpdateResult whereGroupAnd(TGS_RunnableType1<TS_SQLWhereGroups> groups) {
         executor.where = TS_SQLWhereUtils.where();
