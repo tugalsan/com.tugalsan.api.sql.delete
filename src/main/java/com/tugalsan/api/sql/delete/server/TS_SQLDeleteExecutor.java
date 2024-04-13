@@ -4,7 +4,7 @@ import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
 import com.tugalsan.api.sql.update.server.*;
 import com.tugalsan.api.sql.where.server.*;
-import com.tugalsan.api.unsafe.client.*;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 
 public class TS_SQLDeleteExecutor {
 
@@ -22,16 +22,23 @@ public class TS_SQLDeleteExecutor {
     public String toString() {
         var sb = new StringBuilder("DELETE FROM ").append(tableName);
         if (where == null) {
-            TGS_UnSafe.thrw(d.className, "toString", "where cannot be null");
+            throw new IllegalArgumentException(d.className + " -> toString  -> where cannot be null");
         }
         sb.append(" ").append(where);
         return sb.toString();
     }
 
-    public TS_SQLConnStmtUpdateResult run() {
+    public TGS_UnionExcuse<TS_SQLConnStmtUpdateResult> run() {
         d.ci("run", toString());
-        return TS_SQLUpdateStmtUtils.update(anchor, toString(), fillStmt -> {
-            where.fill(fillStmt, 0);
+        var wrap = new Object() {
+            TGS_UnionExcuse<Integer> u_fill;
+        };
+        var u_update =  TS_SQLUpdateStmtUtils.update(anchor, toString(), fillStmt -> {
+            wrap.u_fill = where.fill(fillStmt, 0);
         });
+        if (wrap.u_fill != null && wrap.u_fill.isExcuse()){
+            return wrap.u_fill.toExcuse();
+        }
+        return u_update;
     }
 }
