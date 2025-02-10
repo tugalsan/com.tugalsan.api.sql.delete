@@ -1,10 +1,11 @@
 package com.tugalsan.api.sql.delete.server;
 
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCEUtils;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
 import com.tugalsan.api.sql.update.server.*;
 import com.tugalsan.api.sql.where.server.*;
-import com.tugalsan.api.unsafe.client.*;
+
 
 public class TS_SQLDeleteExecutor {
 
@@ -22,7 +23,7 @@ public class TS_SQLDeleteExecutor {
     public String toString() {
         var sb = new StringBuilder("DELETE FROM ").append(tableName);
         if (where == null) {
-            TGS_UnSafe.thrw(d.className, "toString", "where cannot be null");
+            TGS_FuncMTUCEUtils.thrw(d.className, "toString", "where cannot be null");
         }
         sb.append(" ").append(where);
         return sb.toString();
