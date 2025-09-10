@@ -23,7 +23,7 @@ public class TS_SQLDeleteExecutor {
     public String toString() {
         var sb = new StringBuilder("DELETE FROM ").append(tableName);
         if (where == null) {
-            TGS_FuncMTUUtils.thrw(d.className, "toString", "where cannot be null");
+            TGS_FuncMTUUtils.thrw(d.className(), "toString", "where cannot be null");
         }
         sb.append(" ").append(where);
         return sb.toString();
