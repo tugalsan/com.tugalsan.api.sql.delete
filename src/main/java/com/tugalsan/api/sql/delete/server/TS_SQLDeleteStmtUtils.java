@@ -1,8 +1,8 @@
 package com.tugalsan.api.sql.delete.server;
 
-import com.tugalsan.api.sql.conn.server.*;
-import com.tugalsan.api.sql.sanitize.server.*;
-import com.tugalsan.api.sql.update.server.*;
+import module com.tugalsan.api.sql.conn;
+import module com.tugalsan.api.sql.sanitize;
+import module com.tugalsan.api.sql.update;
 
 public class TS_SQLDeleteStmtUtils { 
 
